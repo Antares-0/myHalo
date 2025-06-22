@@ -175,7 +175,7 @@ public class DefaultRoleService implements RoleService {
                 visited.add(name);
                 var annotations = MetadataUtil.nullSafeAnnotations(role);
                 var dependenciesJson = annotations.get(Role.ROLE_DEPENDENCIES_ANNO);
-                var dependencies = stringToList(dependenciesJson);
+                List<String> dependencies = stringToList(dependenciesJson);
 
                 return Flux.fromIterable(dependencies)
                     .filter(dep -> !visited.contains(dep))
